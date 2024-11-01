@@ -1,0 +1,280 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+:root {
+    --colorDark1: #112D4E;
+    --colorDark2: #3F72AF;
+    --colorLight1: #DBE2EF;
+    --colorLight2: #F9F7F7;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    color: var(--colorLight2);
+    background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+
+.tab-container {
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab {
+    cursor: pointer;
+    font-size: 0.875rem;
+    letter-spacing: 1.75px;
+    padding: 5px 8px;
+}
+
+.tab.current-tab {
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 4px;
+}
+
+.weather-container {
+    margin-block: 4rem;
+    min-height: 500px; /* Ensure enough space for content */
+}
+
+.btn {
+    all: unset;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: var(--colorDark2);
+    cursor: pointer;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: rgba(63, 114, 175, 0.8);
+    transform: scale(1.05);
+}
+
+.sub-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grant-location-container {
+    display: none; 
+}
+
+.grant-location-container.active {
+    display: flex;
+}
+
+.grant-location-container img {
+    margin-bottom: 2rem;
+}
+
+.grant-location-container p:first-of-type {
+    font-size: 1.75rem;
+    font-weight: 600; 
+}
+
+.grant-location-container p:last-of-type {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.75rem;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.75px;
+}
+
+.loading-container {
+    display: none;
+}
+
+.loading-container.active {
+    display: flex;
+}
+
+.loading-container p {
+    text-transform: uppercase;
+}
+
+.user-info-container {
+    display: none;
+}
+
+.user-info-container.active {
+    display: flex;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.user-info-container p {
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+.user-info-container img {
+    width: 90px;
+    height: 90px;
+}
+
+.name p {
+    font-size: 2rem;
+}
+
+.name img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.user-info-container p[data-temp] {
+    font-size: 2.75rem;
+    font-weight: 700;
+}
+
+.parameter-container {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    gap: 20px; 
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.parameter {
+    flex: 1 1 150px; /* Responsive card size */
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; /* Added transition for background color */
+    min-height: 120px; 
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Start slightly below */
+    animation: slideIn 0.5s forwards; /* Call the animation */
+}
+
+.parameter:hover {
+    transform: translateY(-5px) scale(1.05); /* Scale up the card slightly */
+    background-color: rgba(219, 226, 239, 0.7); /* Change background color on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+}
+
+.parameter img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.parameter p:first-of-type {
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.parameter p:last-of-type {
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.form-container {
+    display: none;
+    width: 90%;
+    max-width: 550px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 0 10px; 
+    margin-bottom: 3rem;
+}
+
+.form-container.active {
+    display: flex;
+}
+
+.form-container input {
+    all: unset;
+    width: calc(100% - 80px);
+    height: 40px;
+    padding: 0 20px;
+    background-color: rgba(219, 226, 239, 0.5);
+    border-radius: 10px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-container input:focus {
+    outline: none; /* Remove default outline */
+    border: 2px solid var(--colorLight1); /* Change border color */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Add glow effect */
+}
+
+.form-container .btn {
+    padding: unset;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    margin-bottom: 1px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
